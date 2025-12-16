@@ -99,5 +99,13 @@ require __DIR__.'/auth.php';
 use Illuminate\Support\Facades\DB;
 
 Route::get('/health-db', function () {
-    return DB::select('select 1 as ok');
+    try {
+        $r = DB::select('select 1 as ok');
+        return response()->json($r);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'error' => get_class($e),
+            'message' => $e->getMessage(),
+        ], 500);
+    }
 });
