@@ -48,14 +48,14 @@ return [
 
             return [
                 PDO::MYSQL_ATTR_SSL_CA => $path,
-                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
             ];
         }
 
         // If user provided a file path instead
         return [
             PDO::MYSQL_ATTR_SSL_CA => $pem,
-            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
         ];
     })(),
 
