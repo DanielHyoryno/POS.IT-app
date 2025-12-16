@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+use PDO;
 
 return [
 
@@ -30,29 +31,34 @@ return [
     */
 
     'options' => (function () {
-        if (! extension_loaded('pdo_mysql')) {
+        if (!extension_loaded('pdo_mysql')) {
             return [];
         }
 
-        $sslCa = env('MYSQL_ATTR_SSL_CA'); // your PEM text from Vercel env
-        $sslCaPath = null;
+        $pem = env('MYSQL_ATTR_SSL_CA');
 
-        // If env contains PEM text, write it to a temp file
-        if ($sslCa && str_contains($sslCa, 'BEGIN CERTIFICATE')) {
-            $sslCaPath = sys_get_temp_dir() . '/aiven-ca.pem';
-
-            // Write once (or overwrite if empty)
-            if (!file_exists($sslCaPath) || filesize($sslCaPath) === 0) {
-                file_put_contents($sslCaPath, $sslCa);
-            }
+        if (!$pem) {
+            return [];
         }
 
-        return array_filter([
-            PDO::MYSQL_ATTR_SSL_CA => $sslCaPath, // <-- PATH, not PEM text
-            // Optional but usually good:
+        // If it's PEM text, write to a temp file for PDO
+        if (str_contains($pem, 'BEGIN CERTIFICATE')) {
+            $path = sys_get_temp_dir() . '/aiven-ca.pem';
+            file_put_contents($path, $pem);
+
+            return [
+                PDO::MYSQL_ATTR_SSL_CA => $path,
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+            ];
+        }
+
+        // If user provided a file path instead
+        return [
+            PDO::MYSQL_ATTR_SSL_CA => $pem,
             PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
-        ]);
+        ];
     })(),
+
 
 
     'connections' => [
