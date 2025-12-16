@@ -16,8 +16,7 @@
     "APP_ENV": "production",
     "APP_DEBUG": "false",
     "APP_URL": "https://pos-it-app.vercel.app",
-    "APP_KEY": "base64:REPLACE_ME",
-
+    
     "LOG_CHANNEL": "stderr",
     "LOG_LEVEL": "info",
     "SESSION_DRIVER": "cookie",
