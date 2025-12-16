@@ -29,9 +29,31 @@ return [
     |
     */
 
-    'options' => extension_loaded('pdo_mysql') ? array_filter([
-        PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-    ]) : [],
+    'options' => (function () {
+        if (! extension_loaded('pdo_mysql')) {
+            return [];
+        }
+
+        $sslCa = env('MYSQL_ATTR_SSL_CA'); // your PEM text from Vercel env
+        $sslCaPath = null;
+
+        // If env contains PEM text, write it to a temp file
+        if ($sslCa && str_contains($sslCa, 'BEGIN CERTIFICATE')) {
+            $sslCaPath = sys_get_temp_dir() . '/aiven-ca.pem';
+
+            // Write once (or overwrite if empty)
+            if (!file_exists($sslCaPath) || filesize($sslCaPath) === 0) {
+                file_put_contents($sslCaPath, $sslCa);
+            }
+        }
+
+        return array_filter([
+            PDO::MYSQL_ATTR_SSL_CA => $sslCaPath, // <-- PATH, not PEM text
+            // Optional but usually good:
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+        ]);
+    })(),
+
 
     'connections' => [
 
