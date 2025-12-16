@@ -95,3 +95,9 @@ Route::get('lang/{locale}', function ($locale) {
 })->name('switch.lang');
 
 require __DIR__.'/auth.php';
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/health-db', function () {
+    return DB::select('select 1 as ok');
+});
