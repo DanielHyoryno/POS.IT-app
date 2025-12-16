@@ -16,7 +16,7 @@
     "APP_ENV": "production",
     "APP_DEBUG": "false",
     "APP_URL": "https://pos-it-app.vercel.app",
-    
+
     "LOG_CHANNEL": "stderr",
     "LOG_LEVEL": "info",
     "SESSION_DRIVER": "cookie",
@@ -28,7 +28,6 @@
     "DB_HOST": "switchyard.proxy.rlwy.net",
     "DB_PORT": "29206",
     "DB_DATABASE": "railway",
-    "DB_USERNAME": "root",
-    "DB_PASSWORD": "JGWxPbfuJMATjSKrQJhFMBThfidkUVpt"
+    "DB_USERNAME": "root"
   }
 }
