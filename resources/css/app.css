@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar .collapse {
+  visibility: visible !important;
+}
+
+.navbar .collapse:not(.show) {
+  display: none;
+}
+
+.navbar .collapse.show {
+  display: block;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #0a0a0a;   
+  --bs-body-color: #e5e5e5;
+  --bs-border-color: #262626;
+}
+
+/* FORCE BACKGROUND HITAM */
+[data-bs-theme="dark"] html,
+[data-bs-theme="dark"] body {
+    background-color: #0a0a0a !important; 
+    color: #e5e5e5 !important;
+}
+
+[data-bs-theme="dark"] .min-h-screen {
+    background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: #1f1f1f !important; 
+    border-bottom: 1px solid #262626;   
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+    background-color: #171717 !important;
+    border-color: #404040 !important;
+}
+
+[data-bs-theme="dark"] .table {
+  --bs-table-bg: #0a0a0a;         
+  --bs-table-color: #e5e5e5;      
+  --bs-table-border-color: #262626;
+  --bs-table-striped-bg: #171717; 
+  --bs-table-hover-bg: #262626;
+}
+
+[data-bs-theme="dark"] thead.table-light {
+  --bs-table-bg: #171717;
+  --bs-table-color: #ffffff;
+  --bs-table-border-color: #262626;
+}
+
+[data-bs-theme="dark"] thead.table-light th {
+  background-color: #171717 !important;
+  color: #ffffff !important;
+  border-color: #262626 !important;
+}
+
+[data-bs-theme="dark"] .card {
+  background-color: #1f1f1f !important; 
+  color: #ffffff !important;
+  border: 1px solid #f1f1f1 !important; 
+  border-radius: 12px;
+  overflow: hidden; 
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); 
+}
+
+[data-bs-theme="dark"] .card-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid #262626; 
+}
+
+[data-bs-theme="dark"] .card-body {
+  background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select {
+  background-color: #171717;
+  border-color: #404040;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #737373;
+}
+
+[data-bs-theme="dark"] .form-control:focus,
+[data-bs-theme="dark"] .form-select:focus {
+  background-color: #232323;
+  border-color: #ffffff;          
+  color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1); 
+}
+
+[data-bs-theme="dark"] .form-label {
+  color: #e5e5e5;
+}
+
+[data-bs-theme="dark"] .text-muted {
+  color: #a3a3a3 !important; 
+}
+
+[data-bs-theme="dark"] .form-check-input {
+  background-color: #171717;
+  border-color: #525252;
+}
+
+[data-bs-theme="dark"] .form-check-input:checked {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme="dark"] hr,
+[data-bs-theme="dark"] .border-bottom {
+  border-color: #262626 !important; 
+  opacity: 1;
+}
+
+[data-bs-theme="dark"] .input-group-text {
+  background-color: #262626; 
+  border-color: #404040;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .bg-white {
+    background-color: #0a0a0a !important;
+    color: #fff !important;
+}
+
+[data-bs-theme="dark"] .text-gray-800 {
+    color: #e5e5e5 !important;
+}
+
+[data-bs-theme="dark"] .bg-success-subtle {
+    border: 1px solid #22c55e !important; 
+    color: #22c55e !important;            
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .text-secondary {
+    color: #a3a3a3 !important;
+}
+
+[data-bs-theme="dark"] .bg-body-tertiary {
+    background-color: #262626 !important;
+    color: #ffffff !important;
+    border-color: #404040 !important;
+}
+
+[data-bs-theme="dark"] .list-group-item {
+    background-color: transparent !important;
+    color: #e5e5e5 !important;
+    border-color: #262626 !important; 
+}
+
+[data-bs-theme="dark"] .link-primary,
+[data-bs-theme="dark"] a.text-primary {
+    color: #60a5fa !important; 
+}
+
+[data-bs-theme="dark"] .link-primary:hover,
+[data-bs-theme="dark"] a.text-primary:hover {
+    color: #93c5fd !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary {
+    color: #a3a3a3;
+    border-color: #525252;
+}
+[data-bs-theme="dark"] .btn-outline-secondary:hover,
+[data-bs-theme="dark"] .btn-outline-secondary.active {
+    background-color: #404040;
+    color: #fff;
+    border-color: #525252;
+}
